@@ -1,0 +1,10 @@
+# Nexus Corp Product Pricing Tiers
+
+## NexusCloud Plans
+- Starter Tier: $49/month. Includes up to 3 environments, basic deployment automation, and community support.
+- Professional Tier: $199/month. Includes unlimited environments, advanced rollback automation, and 8/5 email support.
+- Enterprise Tier: Custom pricing. Includes dedicated cluster deployment, 99.99% uptime SLA, and 24/7 phone support.
+
+## CortexAI Usage Fees
+- Pay-as-you-go: $0.002 per 1,000 input tokens and $0.006 per 1,000 output tokens.
+- Volume discounts apply automatically for usage exceeding 10 million tokens per month.

@@ -1,0 +1,12 @@
+# Incident Report: INC-8821 (Confidential)
+
+Date of Incident: February 14, 2026
+Severity Level: Moderate
+
+## Summary
+At 14:15 UTC, the monitoring system detected an abnormal spike in outbound traffic originating from the internal staging database server. 
+
+## Investigation Findings
+- Initial reports suggested a potential data exfiltration event involving customer PII records. However, subsequent forensic analysis confirmed that the spike was caused by an unannounced automated backup script executed by the DevOps engineering team.
+- No unauthorized external IP addresses accessed the network perimeter.
+- The firewall rules functioned as expected, blocking 42 unauthorized connection attempts from external sources during the incident window.

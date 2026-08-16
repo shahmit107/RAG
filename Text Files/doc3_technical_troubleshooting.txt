@@ -1,0 +1,8 @@
+# CortexAI API Troubleshooting Guide
+
+If you encounter errors while integrating with the CortexAI endpoint (v2.4), reference the common error codes and resolution steps below.
+
+## Error Codes
+- ERR_AUTH_401: Invalid or expired API bearer token. Solution: Generate a new token in the developer dashboard. Tokens expire every 30 days.
+- ERR_RATE_LIMIT_429: You have exceeded the maximum threshold of 100 requests per minute. Solution: Implement exponential backoff in your retry logic.
+- ERR_TIMEOUT_504: The model inference took longer than the 30-second gateway limit. Solution: Reduce the max_tokens parameter in your payload.

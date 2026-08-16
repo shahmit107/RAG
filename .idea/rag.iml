@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/venv/lib/python3.12/site-packages" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/lib/python3.12/site-packages/langchain_classic/agents/agent_toolkits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/lib64/python3.12/site-packages/google" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="WSL (Ubuntu-24.04): (/home/mit_shah/.virtualenvs/rag/bin/python)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="py.test" />
+  </component>
+</module>

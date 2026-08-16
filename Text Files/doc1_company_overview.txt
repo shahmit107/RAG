@@ -1,0 +1,15 @@
+# Nexus Corp Overview
+
+Nexus Corp is a global technology solutions provider founded in 2018 by Sarah Jenkins and David Lin. Headquartered in Austin, Texas, the company specializes in cloud-native application development, enterprise AI integration, and cybersecurity audits.
+
+## Leadership
+- Chief Executive Officer (CEO): Sarah Jenkins
+- Chief Technology Officer (CTO): David Lin
+- Chief Financial Officer (CFO): Marcus Vance
+
+## Core Products
+1. NexusCloud: A multi-cloud orchestration platform designed to automate deployment pipelines.
+2. CortexAI: An enterprise-grade large language model fine-tuned for automated compliance and legal document review.
+3. ShieldNet: A zero-trust network access (ZTNA) security suite.
+
+As of fiscal year 2025, Nexus Corp employs over 1,200 people globally across offices in Austin, London, and Tokyo, and reported an annual revenue of $145 million.

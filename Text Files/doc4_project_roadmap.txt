@@ -1,0 +1,9 @@
+# Project Horizon: Q1 - Q4 2026 Roadmap
+
+Project Horizon is Nexus Corp's internal initiative to overhaul its core infrastructure and migrate legacy systems to a serverless architecture.
+
+## Milestone Timeline
+- Q1 2026 (Jan - Mar): Audit existing monolithic databases. Complete security penetration testing on legacy staging environments. (Status: Completed)
+- Q2 2026 (Apr - Jun): Begin containerization of microservices using Docker and Kubernetes. Deploy staging clusters in the US-East region. (Status: In Progress)
+- Q3 2026 (Jul - Sep): Execute canary deployments for internal pilot users. Conduct load testing up to 50,000 concurrent requests. (Status: Upcoming)
+- Q4 2026 (Oct - Dec): Full production cutover. Decommission legacy data centers and transition support to 24/7 SRE rotation. (Status: Planned)
