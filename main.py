@@ -13,7 +13,6 @@ from chunking import read_documents, split_documents, FOLDER_PATH, CHUNK_SIZE, C
 from embedding_manager import EmbeddingManager
 from google import genai
 from chroma_db import add_chunks_to_collection
-from retrieval import bm25_search, build_bm25_index
 
 client = genai.Client()
 
