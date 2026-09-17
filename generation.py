@@ -1,9 +1,5 @@
 
 def build_prompt(query_text, retrieved_chunks):
-    """
-    query_text: the user's original question
-    retrieved_chunks: list of chunk text strings (from your query_collection results) means context
-    """
     # Step 1: join the retrieved chunks into one context block
     formated_chunks = []
     for index, chunk in enumerate(retrieved_chunks, start = 1):
