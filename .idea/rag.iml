@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/venv/lib/python3.12/site-packages" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/venv/lib/python3.12/site-packages/langchain_classic/agents/agent_toolkits" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/venv/lib64/python3.12/site-packages/google" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Text Files/venv/lib/python3.12/site-packages/pip/_vendor/chardet" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/lib64/python3.12/site-packages/chromadb/server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/venv/lib64/python3.12/site-packages/kubernetes" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="WSL (Ubuntu-24.04): (/home/mit_shah/.virtualenvs/rag/bin/python)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

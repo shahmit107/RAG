@@ -11,8 +11,11 @@ def add_chunks_to_collection(chunks, embeddings):
     documents = [chunk.page_content for chunk in chunks]
     metadatas = []
     for chunk in chunks:
-        source_value = chunk.metadata.get("source", "unknown") # .get(key, default_value)
-        metadatas.append({"source": source_value})
+        page = chunk.metadata.get("page", None)
+        metadatas.append({
+            "source": chunk.metadata.get("source", "unknown"), # .get(key, default_value)
+            "page": (page + 1) if page is not None else -1,
+        })
 
     collection.add(
         ids = ids,
@@ -21,10 +24,6 @@ def add_chunks_to_collection(chunks, embeddings):
         metadatas = metadatas
     )
     print(f"Added {len(chunks)} chunks to collection '{collection}'")
-
-
-print("Collections in DB:", client.list_collections())
-print("Total documents stored:", collection.count())
 
 if __name__ == "__main__":
     print("Collections in DB:", client.list_collections())

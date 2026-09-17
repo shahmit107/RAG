@@ -3,25 +3,19 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyMuPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from google import genai
+import tiktoken
 
 # CONFIG
 FOLDER_PATH = "./Pdfs"
-CHUNK_SIZE = 300      # in tokens (approximate, since we're using tiktoken as an estimate)
+CHUNK_SIZE = 300      # in tokens
 CHUNK_OVERLAP = 50    # in tokens
 
-# 1. Initialize the standard client (Make sure GEMINI_API_KEY is in your environment variables)
-client = genai.Client()
+# Local fast tokenizer (runs in memory, zero API calls)
+tokenizer = tiktoken.get_encoding("cl100k_base")
 
-# 2. Update your count_tokens function to use the client
-def count_tokens(text):
-    """Returns an approximate number of tokens a given text will become."""
-    # This calls the fast, built-in count_tokens API method
-    response = client.models.count_tokens(
-        model='gemini-2.5-flash',
-        contents=text
-    )
-    return response.total_tokens
+def count_tokens(text: str) -> int:
+    """Returns local token count instantly without network calls."""
+    return len(tokenizer.encode(text))
 
 # DOCUMENT LOADING
 def read_documents(folder_path):
@@ -45,8 +39,6 @@ def read_documents(folder_path):
         }
     )
     pdf_docs = pdf_loader.load()
-    print(pdf_docs)
-
     return pdf_docs + txt_docs
 
 # CHUNKING

@@ -8,4 +8,8 @@ __pycache__/
 
 # Vector DB local storage
 chroma_db/
+my_local_db/
 *.sqlite3
+
+# Documents & Data
+Pdfs/

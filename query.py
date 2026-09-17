@@ -1,42 +1,58 @@
-from retrieval import query_collection, bm25_search, build_bm25_index, get_all_chunks_from_db, merge_rrf
+# Actual Application of the RAG pipeline: it is executed by the sever.py
+from google import genai
+from dotenv import load_dotenv
+import os
 from generation import build_prompt
 from embedding_manager import EmbeddingManager
-from google import genai
-import os
-from dotenv import load_dotenv
+from sentence_transformers import CrossEncoder
+from retrieval import *
 
-# MUST be loaded BEFORE instantiating genai.Client()
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-query_text = "what is Para Virtualization?"
-n_results = 3
-embedder = EmbeddingManager()
-client = genai.Client()
+print("Execution Started")
 
-all_chunks = get_all_chunks_from_db()
-bm25_index = build_bm25_index(all_chunks)
+class RAGPipeline:
+    def __init__(self):
+        # Load these ONCE when server starts
+        self.embedder = EmbeddingManager()
 
-# keyword search
-bm25_results = bm25_search(query_text, bm25_index, all_chunks, n_results)
-# print("BM25 RESULTS:")
-# for i, (chunk, score) in enumerate(bm25_results):
-#     print(f"{i}: score={score:.2f} | {chunk[:100]}")
+        # Load once, not per-query — this loads the model into memory
+        self.cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
-# vector search
-vector_results  = query_collection(query_text, embedder, n_results)['documents'][0]
-# print("Vector Results: ")
-# for i, chunk in enumerate(vector_results):
-#     print(f"{i}: {chunk[:100]}")  # first 100 chars, just to preview
+        self.all_chunks = get_all_chunks_from_db()  # as we are performing the hybrid retrieval
 
-final_results = merge_rrf(vector_results, bm25_results)
-# print(f"this are the final results: ", final_results)
+        self.bm25_index = build_bm25_index(self.all_chunks)
 
-prompt = build_prompt(query_text, final_results)
+        self.client = genai.Client()
 
-# LLM Call
-response = client.models.generate_content(
-    model="gemini-3.5-flash-lite",
-    contents=prompt
-)
-print(f" this is the {response.text}")
+    def run(self, query_text):
+
+        vector_search = query_collection(query_text, self.embedder, 3) # gives the format of the chroma db
+        vector_chunks = [
+            {"document": doc, "metadata": meta}
+            for doc, meta in zip(vector_search["documents"][0], vector_search["metadatas"][0])
+        ]
+
+        bm25_results_keyword_search = bm25_search(query_text, self.bm25_index, self.all_chunks, 10)
+
+        final_results = merge_rrf(vector_chunks, bm25_results_keyword_search)
+
+        reranked_results = rerank(query_text, final_results, self.cross_encoder, top_n=4)
+
+        print(f"This are the {reranked_results}")
+
+        prompt = build_prompt(query_text, reranked_results)
+
+        response = self.client.models.generate_content(
+            model="gemini-3.6-flash",
+            contents=prompt
+        )
+
+        return response.text # send the actual required resp.
+
+if __name__ == "__main__":
+    rag = RAGPipeline()
+    print("before fun call")
+    rag.run("what is the para virtualisation?")
+    print("after fun call")

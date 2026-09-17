@@ -11,10 +11,7 @@ if not os.getenv("GEMINI_API_KEY"):
 
 from chunking import read_documents, split_documents, FOLDER_PATH, CHUNK_SIZE, CHUNK_OVERLAP
 from embedding_manager import EmbeddingManager
-from google import genai
 from chroma_db import add_chunks_to_collection
-
-client = genai.Client()
 
 # MAIN PIPELINE
 
