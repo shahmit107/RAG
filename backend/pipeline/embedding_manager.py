@@ -2,9 +2,11 @@ import os
 from google import genai
 from dotenv import load_dotenv
 
+from backend.paths import ENV_PATH
+
 # CONFIG
 EMBEDDING_MODEL = "gemini-embedding-001" # Google's current embedding model
-load_dotenv()
+load_dotenv(ENV_PATH)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # EMBEDDING MANAGER CLASS

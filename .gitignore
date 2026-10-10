@@ -1,15 +1,32 @@
-# Virtual environment
+# Virtual environments
 venv/
 .venv/
+
+# Python bytecode and tool caches
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Environment variables & API keys
 .env
+.env.*
+!.env.example
+
+# Local editor settings
+.idea/
+.vscode/
+
+# Runtime logs
+*.log
 
 # Vector DB local storage
 chroma_db/
 my_local_db/
 *.sqlite3
+*.sqlite3-*
 
 # Documents & Data
 Pdfs/
+storage/documents/

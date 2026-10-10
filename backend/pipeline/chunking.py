@@ -5,8 +5,10 @@ from langchain_community.document_loaders import DirectoryLoader, TextLoader, Py
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import tiktoken
 
+from backend.paths import DOCUMENTS_DIR
+
 # CONFIG
-FOLDER_PATH = "./Pdfs"
+FOLDER_PATH = str(DOCUMENTS_DIR)
 CHUNK_SIZE = 300      # in tokens
 CHUNK_OVERLAP = 50    # in tokens
 
